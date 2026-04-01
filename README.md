@@ -10,7 +10,7 @@ vhk7vr
 
 DOI: tba<br>
 [Press Release](./press_release.md)<br>
-[Data Folder](./data/) this will be onedrive<br>
+[Data Folder](https://myuva-my.sharepoint.com/:f:/g/personal/vhk7vr_virginia_edu/IgC3F2bjh_L_TprKXXsqIxA3AaBD-Z7Mau3JrJMRkB8O-ZQ?e=mDgvAN)<br>
 [Pipeline](./pipeline/)<br>
 [MIT License](./LICENSE)<br>
 
@@ -29,7 +29,7 @@ The general problem of recommending content is broad and involves many possible 
 **Motivation**  
 Content recommendation systems are widely used in platforms such as streaming services, where decisions about what data to collect directly affect system complexity, cost, and user privacy. Demographic information is often assumed to improve personalization, but collecting and using it may not always be necessary. This project is motivated by the need to determine whether demographic data provides meaningful improvements in recommendation accuracy. If it does not, systems can remain simpler, more efficient, and less reliant on sensitive user information.
 
-**[Headline]()**
+**[Do Demographics Actually Improve Recommendations?](press_release.md)**
 
 
 ## Domain Exposition
@@ -56,14 +56,14 @@ This project operates in the domain of content recommendation systems, which aim
 
 <br>
 
-**Background Reading**
+**[Background Reading](https://myuva-my.sharepoint.com/:f:/g/personal/vhk7vr_virginia_edu/IgCt6AsfFMQjSZbadmAjBJIvAYJddOvRoTIve25aj9ken2g?e=4Bddu1)**
 | Title | Summary |
 |------|--------|
-| Collaborative Filtering Using a Regression-Based Approach | Introduces a regression-based method for predicting user–movie ratings using relationships between items. Shows that behavioral rating data alone can produce accurate recommendations, even when data is sparse. |
-| Empirical Analysis of Predictive Algorithms for Collaborative Filtering | Compares multiple collaborative filtering methods (correlation, Bayesian, etc.) and shows that performance depends heavily on how user rating behavior is modeled, reinforcing the importance of behavioral data over other signals.  |
-| Matrix Factorization Techniques for Recommender Systems | Explains modern recommendation approaches that model latent user preferences from rating patterns. Demonstrates how behavioral data can uncover hidden factors driving user choices without requiring explicit user attributes. |
-| The MovieLens Datasets: History and Context | Describes the structure and evolution of the MovieLens dataset, a widely used benchmark containing user–movie rating interactions. Highlights how recommendation systems are built around user behavior collected through ratings. |
-| A Survey of Collaborative Filtering Techniques | Provides an overview of major recommendation system approaches, including memory-based and model-based methods. Emphasizes that most systems rely primarily on user interaction data rather than demographic information. |
+| [Collaborative Filtering Using a Regression-Based Approach](https://myuva-my.sharepoint.com/:b:/g/personal/vhk7vr_virginia_edu/IQDZJ3ghexqSSK_x0hqed2AxAXsdYxtx1OHvlTkSu2VkDJU?e=OJIS7F) | Introduces a regression-based method for predicting user–movie ratings using relationships between items. Shows that behavioral rating data alone can produce accurate recommendations, even when data is sparse. |
+| [Empirical Analysis of Predictive Algorithms for Collaborative Filtering](https://myuva-my.sharepoint.com/:b:/g/personal/vhk7vr_virginia_edu/IQC6uf_gg7CnRrIvAituIGHKAZU08NbIEmc9-LB2NLr8w7Y?e=qTZElT) | Compares multiple collaborative filtering methods (correlation, Bayesian, etc.) and shows that performance depends heavily on how user rating behavior is modeled, reinforcing the importance of behavioral data over other signals.  |
+| [Matrix Factorization Techniques for Recommender Systems](https://myuva-my.sharepoint.com/:b:/g/personal/vhk7vr_virginia_edu/IQAQsgWrw8O1S6cAYN5bWo0OAdVYZmdB1fB4FnuP0_-nYXU?e=AEgQ5a) | Explains modern recommendation approaches that model latent user preferences from rating patterns. Demonstrates how behavioral data can uncover hidden factors driving user choices without requiring explicit user attributes. |
+| [The MovieLens Datasets: History and Context](https://myuva-my.sharepoint.com/:b:/g/personal/vhk7vr_virginia_edu/IQCEWdwChx1JRIwKm0OZF1tnARs98qD3RBIIe6PDK5El9Ys?e=bkWvYy) | Describes the structure and evolution of the MovieLens dataset, a widely used benchmark containing user–movie rating interactions. Highlights how recommendation systems are built around user behavior collected through ratings. |
+| [A Survey of Collaborative Filtering Techniques](https://myuva-my.sharepoint.com/:b:/g/personal/vhk7vr_virginia_edu/IQBrqQ0hxtpGTKEDqEIKIdcYAUDc4YOiEUuOs0DZCPyL-Ok?e=nRsXQK) | Provides an overview of major recommendation system approaches, including memory-based and model-based methods. Emphasizes that most systems rely primarily on user interaction data rather than demographic information. |
 
 ## Data Creation
 
@@ -77,9 +77,9 @@ Because the original MovieLens data does not include demographic attributes, syn
 
 | File | Brief Description |
 |---|---|
-| [01_prep_data.py](./pipeline/01_prep_data.py) | Downloads the MovieLens data, generates synthetic demographics, injects a small demographic signal into ratings, and loads the final tables into DuckDB. |
-| [02_analysis.py](./pipeline/02_analysis.py) | Queries the database, engineers model-ready features, performs the train/test split, and fits the baseline and enhanced regression models. |
-| [03_visualization.py](./pipeline/03_visualization.py) | Creates the final visualization used to compare model performance for the press release and report. |
+| [01_prep_data_refactored.py](./pipeline/01_prep_data_refactored.py) | Downloads the MovieLens data, generates synthetic demographics, injects a small demographic signal into ratings, and loads the final tables into DuckDB. |
+| [02_analysis_refactored.py](./pipeline/02_analysis_refactored.py) | Queries the database, engineers model-ready features, performs the train/test split, and fits the baseline and enhanced regression models. |
+| [03_visualization_refactored.py](./pipeline/03_visualization_refactored.py) | Creates the final visualization used to compare model performance for the press release and report. |
 
 ### Bias Identification
 
@@ -97,14 +97,16 @@ The key design decision in this project was the creation of synthetic demographi
 
 ### Schema
 
+![](assets/ERD.png)
+
 ### Data
 | Table | Description | File |
 |------|-------------|------|
-| ratings | User ratings of movies on a 5-star scale; main interaction table used for modeling | [ratings.parquet](https://files.grouplens.org/datasets/movielens/ml-32m.zip) |
-| movies | Movie metadata including title and genres | [movies.parquet](https://files.grouplens.org/datasets/movielens/ml-32m.zip) |
-| tags | User-generated tags describing movies | [tags.parquet](https://files.grouplens.org/datasets/movielens/ml-32m.zip) |
-| links | External identifiers linking movies to IMDb and TMDb | [links.parquet](https://files.grouplens.org/datasets/movielens/ml-32m.zip) |
-| users_demo | Synthetic user demographic attributes generated from Census-based distributions | users_demo.csv (generated in pipeline) |
+| ratings | User ratings of movies on a 5-star scale; main interaction table used for modeling | [ratings.parquet](https://myuva-my.sharepoint.com/:u:/g/personal/vhk7vr_virginia_edu/IQDhC86QBb8wQ5XuLndnfL0vAbxpJQDldXemxTaMGz1nAbU?e=P9HkD9) |
+| movies | Movie metadata including title and genres | [movies.parquet](https://myuva-my.sharepoint.com/:u:/g/personal/vhk7vr_virginia_edu/IQDtdT6eCEwURorVCFxhZdb0AYmI3ncnnm1zRepDJJEaCfQ?e=WOHbug) |
+| tags | User-generated tags describing movies | [tags.parquet](https://myuva-my.sharepoint.com/:u:/g/personal/vhk7vr_virginia_edu/IQA05EkACVflQYbhSHMomAGKAdALtn3sZQKvhZiwn0868Yo?e=Cq7jmv) |
+| links | External identifiers linking movies to IMDb and TMDb | [links.parquet](https://myuva-my.sharepoint.com/:u:/g/personal/vhk7vr_virginia_edu/IQAwm1ML-hdESIg9x05W3S8YAbOOBdu0eLrWv2-X0TWD2ak?e=eNf4OR) |
+| users_demo | Synthetic user demographic attributes generated from Census-based distributions | [users_demo.parquet](https://myuva-my.sharepoint.com/:u:/g/personal/vhk7vr_virginia_edu/IQCYEXn0TwBHRqEIT0FPAGAPAXuzCwXbY19NlpZV3rhYTaU?e=zDdQ8z) |
 
 
 ### Data Dictionary
