@@ -1,11 +1,12 @@
 # DS 4320 Project 1: Do User Demographics Improve Movie Recommendation Systems?
 
+### Executive Summary
 This repository contains a data pipeline and analysis that evaluate whether user demographic information improves recommendation systems. It includes scripts to construct a relational database from a large-scale user–movie interaction dataset, generate synthetic demographic attributes, and prepare data for modeling. The analysis compares a baseline model using only behavioral data with an enhanced model that incorporates demographics to predict user movie ratings on a 5-star scale. Results show that demographic features provide virtually no improvement in predictive performance, indicating that user behavior alone is sufficient for generating effective recommendations.
 
-**Name:**   
+**Name**   
 Liam Ward<br>
 
-**NetID:**  
+**NetID**  
 vhk7vr
 
 [![DOI](https://zenodo.org/badge/1189102154.svg)](https://doi.org/10.5281/zenodo.19363129)<br>
@@ -17,13 +18,13 @@ vhk7vr
 
 ## Problem Definition
 
-**General Problem:**    
+**General Problem**    
 Recommending content
 
-**Refined Problem:**    
+**Refined Problem**    
 Determine whether incorporating user demographic information (age group and sex) improves the accuracy of predicting user movie ratings, and therefore leads to better content recommendations, compared to using behavioral data alone.
 
-**Rationale for refinement:**   
+**Rationale for refinement**   
 The general problem of recommending content is broad and involves many possible approaches, including improving algorithms, collecting new data, or refining existing features. This project narrows the focus to a specific and practical question: whether demographic data improves recommendation accuracy. By isolating the impact of demographic features, the project enables a clear, testable evaluation of whether this type of data is worth incorporating into recommendation systems.
 
 **Motivation**  
@@ -99,7 +100,7 @@ The key design decision in this project was the creation of synthetic demographi
 
 ![](assets/ERD.png)
 
-### Data
+### Data Tables
 | Table | Description | File |
 |------|-------------|------|
 | ratings | User ratings of movies on a 5-star scale; main interaction table used for modeling | [ratings.parquet](https://myuva-my.sharepoint.com/:u:/g/personal/vhk7vr_virginia_edu/IQDhC86QBb8wQ5XuLndnfL0vAbxpJQDldXemxTaMGz1nAbU?e=P9HkD9) |
