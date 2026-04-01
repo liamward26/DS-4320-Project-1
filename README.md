@@ -8,7 +8,7 @@ Liam Ward<br>
 **NetID:**  
 vhk7vr
 
-DOI: tba<br>
+[![DOI](https://zenodo.org/badge/1189102154.svg)](https://doi.org/10.5281/zenodo.19363129)<br>
 [Press Release](./press_release.md)<br>
 [Data Folder](https://myuva-my.sharepoint.com/:f:/g/personal/vhk7vr_virginia_edu/IgC3F2bjh_L_TprKXXsqIxA3AaBD-Z7Mau3JrJMRkB8O-ZQ?e=mDgvAN)<br>
 [Pipeline](./pipeline/)<br>
